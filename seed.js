@@ -32,7 +32,12 @@ const seed = async () => {
     await Promise.all(UserPromises)
 
     console.log("Shows and User database info populated!")
+    // test instances --- assign shows to users
+    const user1= await User.findByPk(1);
+    const show1 = await Show.findByPk(1);
+    const show2 = await Show.findByPk(2)
+    await user1.addShows([show1,show2])
 }
-seed()
+seed();
 //export my seed function
 module.exports = seed;
