@@ -8,6 +8,9 @@ const showRouter = require('./routes/shows')
 app.get('/',(req,res)=>{
     res.send("the root path GET endpoint works")
 })
+//middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 //express routers
 app.use('/users',userRouter)
 app.use('/shows',showRouter)
