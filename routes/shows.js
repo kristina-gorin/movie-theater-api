@@ -10,14 +10,15 @@ router.get('/',async(req,res)=>{
 router.get("/:id", async(req,res)=>{
     res.json(await Show.findByPk(req.params.id))
 })
-// //get shows of one genre
-// router.get("/genres/:genre",async(req,res)=>{
-//     req.send(await Show.findByPk({
-//         where:{
-//             genre:req.params.genre
-//         }
-//     }))
-// })
+
+//get shows of one genre
+router.get("/genres/:genre",async(req,res)=>{
+    res.send(await Show.findAll({
+        where:{
+            genre:req.params.genre
+        }
+    }))
+})
 
 //update status of a show
 // router.put("/id:/updates", async(req,res)=>{
