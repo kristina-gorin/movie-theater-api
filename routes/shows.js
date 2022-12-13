@@ -10,12 +10,23 @@ router.get('/',async(req,res)=>{
 router.get("/:id", async(req,res)=>{
     res.json(await Show.findByPk(req.params.id))
 })
-//get shows of one genre
-router.get("/genres/:genre",async(req,res)=>{
-    req.send(await Show.findByPk({
-        where:{
-            genre:'req.params.genre'
-        }
-    }))
+// //get shows of one genre
+// router.get("/genres/:genre",async(req,res)=>{
+//     req.send(await Show.findByPk({
+//         where:{
+//             genre:req.params.genre
+//         }
+//     }))
+// })
+
+//update status of a show
+// router.put("/id:/updates", async(req,res)=>{
+    
+// })
+//delete a show
+router.delete('/:id',async(req,res)=>{
+    showToDelete = await Show.findByPk(req.params.id);
+    await showToDelete.destroy();
+    res.send(await Show.findAll())
 })
 module.exports = router;
