@@ -23,7 +23,17 @@ router.get("/genres/:genre",async(req,res)=>{
 //update show's rating
 router.put("/:id/watched", async(req,res)=>{
     watchedShow = await Show.findByPk(req.params.id)
-    watchedShow.update(req.body);
+    watchedShow.update({
+        rating:req.body.rating
+    });
+    res.send(await Show.findAll())
+})
+//upd status of show
+router.put('/:id/updates',async(req,res)=>{
+    updateShow = await Show.findByPk(req.params.id)
+    updateShow.update({
+        status:req.body.status
+    });
     res.send(await Show.findAll())
 })
 //delete a show
